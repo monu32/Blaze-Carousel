@@ -35,3 +35,12 @@
     transition : right 1s;
 }
 
+.blaze-item-active
+{
+    display: inline-block;
+}
+
+.blaze-item-inactive
+{
+    display: none;
+}
