@@ -1,0 +1,37 @@
+.outer
+{
+    width : 900px;
+    height: 350px;
+    background-color:salmon;
+    margin-right: auto;
+    margin-left:auto;
+}
+
+.blaze-outer-container
+{
+    display: block;
+    font-size:0px;
+    width:90%;
+    margin-right:auto;
+    margin-left:auto;
+    height:300px;
+    background-color:seagreen;
+    text-align: center;
+}
+
+.blaze-item
+{
+    display: inline-block;
+    position: relative;
+    width:150px;
+    height:70%;
+    top:50%;
+    margin-right:2%;
+    margin-left:2%;
+    transform: translateY(-50%);
+    font-size:20px;
+    border:2px solid black;
+    right : 0%;
+    transition : right 1s;
+}
+
