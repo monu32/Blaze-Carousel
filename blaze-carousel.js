@@ -5,86 +5,85 @@
         return document.getElementsByClassName(tagClass)
     }
 
-    function applyBlazItemClass()
+    function applyBlazeClasses()
     {
-        var items=getHtmlTags("blaze-outer-container")[0].getElementsByTagName("div");
-        for(var i=0;i<items.length;i++) 
-            items[i].classList.add('blaze-item')
-    }
-    
-    function setBlazeItemActive(item)
-    {
-        item.classList.remove('blaze-item-inactive')
-        item.classList.add('blaze-item-active')
-    }
-
-    function setBlazeItemInactive(item)
-    {
-        item.classList.remove('blaze-item-active')        
-        item.classList.add('blaze-item-inactive')
+        for(let i=0;i<numberOfInnerContainers;i++)
+        {
+            let innerContainer = document.createElement("div")
+            innerContainer.classList.add('blaze-inner-container')
+            
+            for(let j=0;j<n;j++)
+            {
+                if(items[0].classList.contains("blaze-inner-container")){
+                    break;
+                }
+                else
+                {
+                    items[0].classList.add("blaze-item")
+                    innerContainer.appendChild(items[0])                
+                }
+            }
+            outerContainer.appendChild(innerContainer)
+        }
     }
 
     function itemsPerSlide()
     {
-        var outerContainzerWidth = getHtmlTags('blaze-outer-container')[0].offsetWidth;
-        var item = getHtmlTags('blaze-item')[0];
-        areaCoverByItem = item.offsetWidth + (outerContainzerWidth*2/100)
-        return parseInt(outerContainzerWidth/areaCoverByItem)
+        const items = getHtmlTags('blaze-outer-container')
+        const outerContainerWidth = items[0].offsetWidth
+        const item = items[0].children[0]
+        const itemWidth = item.offsetWidth        
+        return parseInt(outerContainerWidth/itemWidth)-1
     }
 
-    function udpateSlides(l,r)
-    {
-        var i=0;
-        while(i<len)
-        {
-            if(i>=l && i<=r)
-            {
-                setBlazeItemActive(items[i])
-                lastActiveItem = i
-            }
-            else 
-                setBlazeItemInactive(items[i])                
-            i++;
-        }
-    }
-
-    function udpateSlidesOnRightButton()
-    {
-        if(lastActiveItem===len-1)
-            return
-        else
-            udpateSlides(lastActiveItem+1,lastActiveItem+n)
-    }
-
-    //0 1 2 3  4 5 6 7  8 9 10 11  12 13
-    function udpateSlidesOnLeftButton()
-    {
-        if(lastActiveItem===n-1)
-           return
-        
-        var activeItemsLen = getHtmlTags('blaze-item-active').length
-        if(activeItemsLen < n)         
-            udpateSlides(lastActiveItem - (n + activeItemsLen) +1,lastActiveItem-activeItemsLen)
-        else
-            udpateSlides(lastActiveItem - 2*n +1,lastActiveItem-n)
-    }
-
-    
-    applyBlazItemClass()
-
-    var lastActiveItem = -1;
-    var items = getHtmlTags('blaze-item');
-    var len = items.length
-    var n = itemsPerSlide();
-
-    udpateSlides(0,n-1);
+    const n = itemsPerSlide();
+    const outerContainer = getHtmlTags("blaze-outer-container")[0]
+    const items = outerContainer.children
+    const numberOfInnerContainers = items.length % n ? parseInt(items.length/n + 1)  : items.length / n
+    applyBlazeClasses()
+    const innerContainersList = getHtmlTags('blaze-inner-container')
 
     document.getElementById("blaze-right-btn").addEventListener("click",function () { 
-        udpateSlidesOnRightButton();
+
+        for(var i=0;i<innerContainersList.length;i++)
+        {
+            rightValue = innerContainersList[i].style.right
+            if(rightValue==='') {
+                innerContainersList[i].style.setProperty('right','100%');
+            }
+            else
+            {
+                rightValue = parseInt(rightValue.replace('%',''))+100                
+                if(numberOfInnerContainers*100 === rightValue){
+                    return;
+                }
+
+                rightValue+='%'
+                innerContainersList[i].style.setProperty('right',rightValue);
+            }
+        }
     })
 
     document.getElementById("blaze-left-btn").addEventListener("click",function () { 
-        udpateSlidesOnLeftButton();
+
+        for(var i=0;i<innerContainersList.length;i++)
+        {
+            rightValue = innerContainersList[i].style.right
+            if(rightValue==='') {
+                innerContainersList[i].style.setProperty('right','0%');
+            }
+            else
+            {
+                rightValue = parseInt(rightValue.replace('%',''))-100                
+                if(rightValue === -100){
+                    return;
+                }
+
+                rightValue+='%'
+                innerContainersList[i].style.setProperty('right',rightValue);
+            }
+        }
     })
 
 })()
+
