@@ -29,7 +29,7 @@
 
     function itemsPerSlide()
     {
-        const items = getHtmlTags('blaze-outer-container')
+        const items = getHtmlTags('blaze-container')
         const outerContainerWidth = items[0].offsetWidth
         const item = items[0].children[0]
         const itemWidth = item.offsetWidth        
@@ -37,7 +37,7 @@
     }
 
     const n = itemsPerSlide();
-    const outerContainer = getHtmlTags("blaze-outer-container")[0]
+    const outerContainer = getHtmlTags("blaze-container")[0]
     const items = outerContainer.children
     const numberOfInnerContainers = items.length % n ? parseInt(items.length/n + 1)  : items.length / n
     applyBlazeClasses()
