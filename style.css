@@ -1,0 +1,19 @@
+body{
+    margin:0px;
+}
+
+.outer-container
+{
+    display: flex;
+    width : 900px;
+    height: 350px;
+    background-color:inherit;
+    margin-right: auto;
+    margin-left:auto;
+}
+
+.item
+{
+    min-width:150px;
+    border:2px solid black;
+}
