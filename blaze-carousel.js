@@ -33,7 +33,8 @@
         const outerContainerWidth = items[0].offsetWidth
         const item = items[0].children[0]
         const itemWidth = item.offsetWidth        
-        return parseInt(outerContainerWidth/itemWidth)-1
+        const n = parseInt(outerContainerWidth/itemWidth)-1;
+        return !n ? 1 : n; 
     }
 
     const n = itemsPerSlide();
