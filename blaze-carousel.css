@@ -1,45 +1,21 @@
 .blaze-item
 {
-    display: inline-block;
     position: relative;
-    min-width:150px;
-    height:70%;
     top:50%;
     margin-right:2%;
     margin-left:2%;
     transform: translateY(-50%);
-    font-size:20px;
-    border:2px solid black;
-}
-
-
-@media screen and (max-width: 320px) { 
-    .outer-container
-    {
-        display: flex;
-        width : 300px;
-        height: 350px;
-        background-color:inherit;
-        margin-right: auto;
-        margin-left:auto;
-    }
-    .blaze-item
-    {
-        min-width: 120px;
-    }
-
 }
 
 .blaze-container
 {
     display: flex;
-    font-size:0px;
     width:100%;
     margin-right:auto;
     margin-left:auto;
     height:inherit;
     overflow-x:hidden;
-    background-color:seagreen;
+    background-color:inherit;
 }
 
 .blaze-inner-container
@@ -49,7 +25,7 @@
     justify-content: space-around;
     min-width: 100%;
     right: 0%;
-    transition: right 1s;
+    transition: right 0.7s;
 }
 
 #blaze-left-btn,#blaze-right-btn{
