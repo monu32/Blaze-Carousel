@@ -1,0 +1,24 @@
+{
+  "name": "Carousel",
+  "version": "1.0.0",
+  "description": "Check demo at : https://monu32.github.io/Reusable-Carousel/",
+  "main": "blaze-carousel.js",
+  "scripts": {
+    "start": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/monu32/Reusable-Carousel.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/monu32/Reusable-Carousel/issues"
+  },
+  "homepage": "https://github.com/monu32/Reusable-Carousel#readme",
+  "devDependencies": {
+    "webpack": "^5.65.0",
+    "webpack-cli": "^4.9.1"
+  }
+}
