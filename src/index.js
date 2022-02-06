@@ -1,3 +1,6 @@
+import './style.css';
+import './blaze-carousel.css';
+
 (function (){
     
     function getHtmlTags(tagClass)
@@ -48,7 +51,7 @@
 
         for(var i=0;i<innerContainersList.length;i++)
         {
-            rightValue = innerContainersList[i].style.right
+            let rightValue = innerContainersList[i].style.right;
             if(rightValue==='') {
                 innerContainersList[i].style.setProperty('right','100%');
             }
@@ -69,7 +72,8 @@
 
         for(var i=0;i<innerContainersList.length;i++)
         {
-            rightValue = innerContainersList[i].style.right
+            let rightValue = innerContainersList[i].style.right;
+
             if(rightValue==='') {
                 innerContainersList[i].style.setProperty('right','0%');
             }
